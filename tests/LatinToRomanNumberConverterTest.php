@@ -118,4 +118,15 @@ class LatinToRomanNumberConverterTest extends TestCase
 
         $this->assertEquals('CM', $subject->convert(900));
     }
+
+    /** @test */
+    public function can_convert_more_complex_numbers()
+    {
+        $subject = new LatinToRomanNumberConverter();
+
+        $this->assertEquals('MCMLIV', $subject->convert(1954));
+        $this->assertEquals('MCMXC', $subject->convert(1990));
+        $this->assertEquals('MMXIV', $subject->convert(2014));
+        $this->assertEquals('MMMMCMXCIX', $subject->convert(4999));
+    }
 }
