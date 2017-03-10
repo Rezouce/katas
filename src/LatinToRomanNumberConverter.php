@@ -6,6 +6,6 @@ class LatinToRomanNumberConverter
 
     public function convert(int $latinNumber)
     {
-        return 'I';
+        return str_pad('', $latinNumber, 'I');
     }
 }
