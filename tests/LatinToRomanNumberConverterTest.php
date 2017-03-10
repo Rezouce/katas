@@ -70,4 +70,52 @@ class LatinToRomanNumberConverterTest extends TestCase
 
         $this->assertEquals('M', $subject->convert(1000));
     }
+
+    /** @test */
+    public function can_convert_4_to_IV()
+    {
+        $subject = new LatinToRomanNumberConverter();
+
+        $this->assertEquals('IV', $subject->convert(4));
+    }
+
+    /** @test */
+    public function can_convert_9_to_IX()
+    {
+        $subject = new LatinToRomanNumberConverter();
+
+        $this->assertEquals('IX', $subject->convert(9));
+    }
+
+    /** @test */
+    public function can_convert_40_to_XL()
+    {
+        $subject = new LatinToRomanNumberConverter();
+
+        $this->assertEquals('XL', $subject->convert(40));
+    }
+
+    /** @test */
+    public function can_convert_90_to_XC()
+    {
+        $subject = new LatinToRomanNumberConverter();
+
+        $this->assertEquals('XC', $subject->convert(90));
+    }
+
+    /** @test */
+    public function can_convert_400_to_CD()
+    {
+        $subject = new LatinToRomanNumberConverter();
+
+        $this->assertEquals('CD', $subject->convert(400));
+    }
+
+    /** @test */
+    public function can_convert_900_to_CM()
+    {
+        $subject = new LatinToRomanNumberConverter();
+
+        $this->assertEquals('CM', $subject->convert(900));
+    }
 }

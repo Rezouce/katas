@@ -11,6 +11,12 @@ class LatinToRomanNumberConverter
         'LL' => 'C',
         'CCCCC' => 'D',
         'DD' => 'M',
+        'IIII' => 'IV',
+        'VIV' => 'IX',
+        'XXXX' => 'XL',
+        'LXL' => 'XC',
+        'CCCC' => 'CD',
+        'DCD' => 'CM',
     ];
 
     public function convert(int $latinNumber)
