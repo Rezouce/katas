@@ -4,16 +4,19 @@ namespace Kata;
 class LatinToRomanNumberConverter
 {
 
+    private $map = [
+        'IIIII' => 'V',
+        'VV' => 'X',
+        'XXXXX' => 'L',
+        'LL' => 'C',
+        'CCCCC' => 'D',
+        'DD' => 'M',
+    ];
+
     public function convert(int $latinNumber)
     {
         $romanNumber = str_pad('', $latinNumber, 'I');
-
-        $romanNumber = str_replace('IIIII', 'V', $romanNumber);
-        $romanNumber = str_replace('VV', 'X', $romanNumber);
-        $romanNumber = str_replace('XXXXX', 'L', $romanNumber);
-        $romanNumber = str_replace('LL', 'C', $romanNumber);
-        $romanNumber = str_replace('CCCCC', 'D', $romanNumber);
-        $romanNumber = str_replace('DD', 'M', $romanNumber);
+        $romanNumber = str_replace(array_keys($this->map), $this->map, $romanNumber);
 
         return $romanNumber;
     }
