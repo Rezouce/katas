@@ -90,12 +90,25 @@ class NumberTest extends TestCase
     }
 
     /** @test */
-    public function return_the_composing_numbers_into_a_collection()
+    public function N_digits_numbers_are_composed_of_themselves_and_N_minus_1_digit_numbers_up_to_1_digit_numbers_without_any_duplicated_numbers_for_collection()
     {
-        $number = new Number(500);
+        $testedNumbers = [1, 5, 9, 10, 55, 100, 110, 2000, 9001, 8456];
 
-        $expectedCollection = new NumberCollection($number->getComposingNumbersArray());
+        foreach ($testedNumbers as $i) {
+            $number = new Number($i);
 
-        $this->assertTrue($expectedCollection->isEqual($number->getComposingNumbers()));
+            $this->assertNumberCollectionForInt($i, $number->getComposingNumbers());
+        }
+    }
+
+    private function assertNumberCollectionForInt($int, NumberCollection $listNumbers)
+    {
+        $listOfIntegers = $this->getListOfIntComposingAnInt($int);
+
+        $expectedNumbers = new NumberCollection(array_map(function ($int) {
+            return new Number($int);
+        }, $listOfIntegers));
+
+        $this->assertTrue($expectedNumbers->isEqual($listNumbers));
     }
 }
