@@ -26,14 +26,14 @@ class NumberCollection implements \IteratorAggregate, \Countable
     {
         $foundIntegers = [];
 
-        $this->numbers = array_filter($this->numbers, function (Number $number) use (&$foundIntegers) {
+        $numbers = array_filter($this->numbers, function (Number $number) use (&$foundIntegers) {
             $found = in_array($number->toInt(), $foundIntegers);
             $foundIntegers[] = $number->toInt();
 
             return !$found;
         });
 
-        return $this;
+        return new NumberCollection($numbers);
     }
 
     public function isEqual(NumberCollection $collection)
@@ -54,19 +54,19 @@ class NumberCollection implements \IteratorAggregate, \Countable
 
     public function rsort()
     {
-        usort($this->numbers, function(Number $number1, Number $number2) {
+        $numbers = $this->numbers;
+
+        usort($numbers, function(Number $number1, Number $number2) {
             return $number2->toInt() <=> $number1->toInt();
         });
 
-        return $this;
+        return new NumberCollection($numbers);
     }
 
     public function getHighestPrimeNumber()
     {
-        $this->rsort();
-
         /** @var Number $number */
-        foreach ($this->numbers as $number) {
+        foreach ($this->rsort()->numbers as $number) {
             if ($number->isPrime()) {
                 return $number;
             }
