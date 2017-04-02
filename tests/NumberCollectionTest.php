@@ -82,4 +82,14 @@ class NumberCollectionTest extends TestCase
         $numberCollection = new NumberCollection(array_merge($numbers, $numbers));
         $this->assertEquals($biggestPrimeNumber, $numberCollection->getBiggestPrimeNumber());
     }
+
+    /** @test */
+    public function throws_an_exception_when_trying_to_find_the_biggest_prime_number_when_they_arent_one()
+    {
+        $numberCollection = new NumberCollection([new Number(4), new Number(6), new Number(8)]);
+
+        $this->expectException(\LogicException::class);
+        $this->expectExceptionMessage('Could not find a prime number in the collection.');
+        $numberCollection->getBiggestPrimeNumber();
+    }
 }

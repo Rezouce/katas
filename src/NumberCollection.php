@@ -67,5 +67,7 @@ class NumberCollection implements \IteratorAggregate, \Countable
                 return $number;
             }
         }
+
+        throw new \LogicException('Could not find a prime number in the collection.');
     }
 }
