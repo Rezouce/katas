@@ -41,7 +41,7 @@ class NumberTest extends TestCase
         foreach ($testedNumbers as $i) {
             $number = new Number($i);
 
-            $this->assertListNumbersForInt($i, $number->getComposingNumbers());
+            $this->assertListNumbersForInt($i, $number->getComposingNumbersArray());
         }
     }
 
@@ -94,8 +94,8 @@ class NumberTest extends TestCase
     {
         $number = new Number(500);
 
-        $expectedCollection = new NumberCollection($number->getComposingNumbers());
+        $expectedCollection = new NumberCollection($number->getComposingNumbersArray());
 
-        $this->assertTrue($expectedCollection->isEqual($number->getComposingNumbersCollection()));
+        $this->assertTrue($expectedCollection->isEqual($number->getComposingNumbers()));
     }
 }
