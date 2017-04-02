@@ -57,7 +57,7 @@ class NumberCollection implements \IteratorAggregate, \Countable
         });
     }
 
-    public function getBiggestPrimeNumber()
+    public function getHighestPrimeNumber()
     {
         $this->rsort();
 
