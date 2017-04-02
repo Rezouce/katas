@@ -22,7 +22,7 @@ class NumberCollection implements \IteratorAggregate, \Countable
         return count($this->numbers);
     }
 
-    public function removeDuplicate()
+    public function removeDuplicates()
     {
         $foundIntegers = [];
 

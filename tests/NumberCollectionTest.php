@@ -40,7 +40,7 @@ class NumberCollectionTest extends TestCase
         $numberCollection = new NumberCollection(array_merge($numbers, $numbers));
         $this->assertCount(4, $numberCollection);
 
-        $result = $numberCollection->removeDuplicate();
+        $result = $numberCollection->removeDuplicates();
 
         $this->assertEquals($numbers, $result->getIterator()->getArrayCopy());
         $this->assertNotSame($result, $numberCollection);

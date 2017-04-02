@@ -70,7 +70,7 @@ class Number
     private function getComposingNumbers()
     {
         $collection = new NumberCollection($this->getComposingNumbersAsArray());
-        $collection->removeDuplicate();
+        $collection->removeDuplicates();
 
         return $collection;
     }
