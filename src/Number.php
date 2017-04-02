@@ -67,7 +67,7 @@ class Number
         return $composingNumbers;
     }
 
-    public function getComposingNumbers()
+    private function getComposingNumbers()
     {
         $collection = new NumberCollection($this->getComposingNumbersArray());
         $collection->removeDuplicate();
