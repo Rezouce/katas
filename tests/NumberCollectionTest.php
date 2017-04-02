@@ -40,7 +40,7 @@ class NumberCollectionTest extends TestCase
         $numberCollection = new NumberCollection(array_merge($numbers, $numbers));
         $this->assertCount(4, $numberCollection);
 
-        $numberCollection->removeDuplicate();
+        $numberCollection = $numberCollection->removeDuplicate();
 
         $this->assertEquals($numbers, $numberCollection->getIterator()->getArrayCopy());
     }
@@ -67,7 +67,7 @@ class NumberCollectionTest extends TestCase
         $number3 = new Number(3);
 
         $numberCollection = new NumberCollection([$number1, $number3, $number2]);
-        $numberCollection->rsort();
+        $numberCollection = $numberCollection->rsort();
 
         $this->assertEquals([$number3, $number2, $number1], $numberCollection->getIterator()->getArrayCopy());
     }

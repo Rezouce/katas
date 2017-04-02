@@ -32,6 +32,8 @@ class NumberCollection implements \IteratorAggregate, \Countable
 
             return !$found;
         });
+
+        return $this;
     }
 
     public function isEqual(NumberCollection $collection)
@@ -55,6 +57,8 @@ class NumberCollection implements \IteratorAggregate, \Countable
         usort($this->numbers, function(Number $number1, Number $number2) {
             return $number2->toInt() <=> $number1->toInt();
         });
+
+        return $this;
     }
 
     public function getHighestPrimeNumber()
