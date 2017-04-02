@@ -33,4 +33,20 @@ class NumberCollection implements \IteratorAggregate, \Countable
             return !$found;
         });
     }
+
+    public function isEqual(NumberCollection $collection)
+    {
+        $collectionToInt1 = $this->getIntValues();
+        $collectionToInt2 = $collection->getIntValues();
+
+        return empty(array_diff($collectionToInt1, $collectionToInt2))
+            && count($collectionToInt1) == count($collectionToInt2);
+    }
+
+    private function getIntValues()
+    {
+        return array_map(function (Number $number) {
+            return $number->toInt();
+        }, $this->numbers);
+    }
 }

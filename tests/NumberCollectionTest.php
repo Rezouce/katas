@@ -46,4 +46,18 @@ class NumberCollectionTest extends TestCase
 
         $this->assertEmpty($numbers);
     }
+
+    /** @test */
+    public function compare_if_2_collections_are_equals()
+    {
+        $numberCollection1 = new NumberCollection([new Number(1), new Number(10)]);
+        $numberCollection2 = new NumberCollection([new Number(10), new Number(1)]);
+        $numberCollection3 = new NumberCollection([new Number(1), new Number(10), new Number(3)]);
+        $numberCollection4 = new NumberCollection([new Number(1)]);
+
+        $this->assertTrue($numberCollection1->isEqual($numberCollection1));
+        $this->assertTrue($numberCollection1->isEqual($numberCollection2));
+        $this->assertFalse($numberCollection1->isEqual($numberCollection3));
+        $this->assertFalse($numberCollection1->isEqual($numberCollection4));
+    }
 }
