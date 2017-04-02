@@ -69,6 +69,11 @@ class Number
         return $composingNumbers;
     }
 
+    public function getComposingNumbersCollection()
+    {
+        return new NumberCollection($this->getComposingNumbers());
+    }
+
     private function removeDuplicateNumbers(array $numbers)
     {
         $foundIntegers = [];

@@ -3,6 +3,7 @@
 namespace Test\Kata;
 
 use Kata\Number;
+use Kata\NumberCollection;
 use PHPUnit\Framework\TestCase;
 
 class NumberTest extends TestCase
@@ -86,5 +87,15 @@ class NumberTest extends TestCase
         }
 
         return array_unique($ints);
+    }
+
+    /** @test */
+    public function return_the_composing_numbers_into_a_collection()
+    {
+        $number = new Number(500);
+
+        $expectedCollection = new NumberCollection($number->getComposingNumbers());
+
+        $this->assertTrue($expectedCollection->isEqual($number->getComposingNumbersCollection()));
     }
 }
