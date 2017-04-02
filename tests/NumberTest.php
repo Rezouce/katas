@@ -23,4 +23,12 @@ class NumberTest extends TestCase
 
         $this->assertFalse($number->isPrime());
     }
+
+    /** @test */
+    public function check_if_2_is_prime()
+    {
+        $number = new Number(2);
+
+        $this->assertTrue($number->isPrime());
+    }
 }
