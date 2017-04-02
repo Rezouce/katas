@@ -71,4 +71,15 @@ class NumberCollectionTest extends TestCase
 
         $this->assertEquals([$number3, $number2, $number1], $numberCollection->getIterator()->getArrayCopy());
     }
+
+    /** @test */
+    public function find_biggest_prime_number()
+    {
+        $biggestPrimeNumber = new Number(17);
+
+        $numbers = [new Number(2), new Number(100), $biggestPrimeNumber, new Number(4)];
+
+        $numberCollection = new NumberCollection(array_merge($numbers, $numbers));
+        $this->assertEquals($biggestPrimeNumber, $numberCollection->getBiggestPrimeNumber());
+    }
 }

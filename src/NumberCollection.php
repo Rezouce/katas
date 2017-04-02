@@ -56,4 +56,16 @@ class NumberCollection implements \IteratorAggregate, \Countable
             return $number2->toInt() <=> $number1->toInt();
         });
     }
+
+    public function getBiggestPrimeNumber()
+    {
+        $this->rsort();
+
+        /** @var Number $number */
+        foreach ($this->numbers as $number) {
+            if ($number->isPrime()) {
+                return $number;
+            }
+        }
+    }
 }
