@@ -25,94 +25,52 @@ class NumberTest extends TestCase
     }
 
     /** @test */
-    public function one_digit_numbers_are_composed_of_themselves_only()
+    public function N_digits_numbers_are_composed_of_themselves_and_N_minus_1_digit_numbers_up_to_1_digit_numbers()
     {
-        for ($i = 0; $i <= 9; ++$i) {
-            $number = new Number($i);
-
-            $this->assertEquals([$number], $number->getComposingNumbers());
-        }
-    }
-
-    /** @test */
-    public function two_digit_numbers_are_composed_of_1_digit_numbers_and_themselves()
-    {
-        for ($i = 10; $i <= 99; ++$i) {
-            $number = new Number($i);
-
-            $expectedNumbers = [
-                $number,
-                new Number(((string)$i)[0]),
-                new Number(((string)$i)[1]),
-            ];
-
-            $this->assertEquals($expectedNumbers, $number->getComposingNumbers());
-        }
-    }
-
-    /** @test */
-    public function three_digits_numbers_which_3_different_numbers_are_composed_of_1_digit_numbers_2_digits_numbers_and_themselves()
-    {
-        $testedNumbers = range(110, 199);
+        $testedNumbers = range(1, 2000);
 
         foreach ($testedNumbers as $i) {
             $number = new Number($i);
 
-            $expectedNumbers = [
-                $number,
-                new Number(substr($i, 0, 2)),
-                new Number((int)((string)$i)[0]),
-                new Number((int)((string)$i)[1]),
-                new Number(substr($i, 1, 2)),
-                new Number((int)((string)$i)[1]),
-                new Number((int)((string)$i)[2]),
-            ];
+            $this->assertListNumbersForInt($i, $number->getComposingNumbers());
+        }
+    }
 
-            $this->assertEquals(
-                $expectedNumbers,
-                $number->getComposingNumbers(),
-                "Couldn't retrieve composing numbers from " . $i
+    private function assertListNumbersForInt($int, array $listNumbers)
+    {
+        $listOfIntegers = $this->getListOfIntComposingAnInt($int);
+
+        $expectedNumbers = array_map(function ($int) {
+            return new Number($int);
+        }, $listOfIntegers);
+
+        foreach ($expectedNumbers as $index => $expectedNumber) {
+            $found = false;
+
+            foreach ($listNumbers as $number) {
+                if ($expectedNumber == $number) {
+                    $found = true;
+                    continue;
+                }
+            }
+
+            $this->assertTrue(
+                $found,
+                sprintf('The composing number %s was not found for number %s', $listOfIntegers[$index], $int)
             );
         }
     }
 
-    /** @test */
-    public function can_manage_100()
+    private function getListOfIntComposingAnInt($int)
     {
-        $number = new Number(100);
+        $ints = [];
 
-        $expectedNumbers = [
-            new Number(100),
-            new Number(10),
-            new Number(1),
-            new Number(0),
-            new Number(0),
-        ];
-
-        $this->assertEquals($expectedNumbers, $number->getComposingNumbers());
-    }
-
-    /** @test */
-    public function can_manage_101_to_109()
-    {
-        $testedNumbers = range(101, 109);
-
-        foreach ($testedNumbers as $i) {
-            $number = new Number($i);
-
-            $expectedNumbers = [
-                $number,
-                new Number(10),
-                new Number(1),
-                new Number(0),
-                new Number(substr($i, 2)),
-            ];
-
-            $this->assertEquals(
-                $expectedNumbers,
-                $number->getComposingNumbers(),
-                "Couldn't retrieve composing numbers from " . $i
-            );
+        for ($i = 0; $i < strlen($int); ++$i) {
+            for ($j = 1; $j + $i <= strlen($int); ++$j) {
+                $ints[] = (int)substr($int, $i, $j);
+            }
         }
+
+        return array_unique($ints);
     }
 }
