@@ -68,4 +68,21 @@ class NumberTest extends TestCase
 
         return array_unique($ints);
     }
+
+    /** @test */
+    public function get_the_highest_prime_number_composing_a_number()
+    {
+        $testedNumbers = [
+            2 => 2,
+            25 => 5,
+            1923 => 23,
+            18572 => 857,
+        ];
+
+        foreach ($testedNumbers as $testedNumber => $result) {
+            $number = new Number($testedNumber);
+
+            $this->assertEquals($result, $number->getHighestComposingPrimeNumber()->toInt());
+        }
+    }
 }

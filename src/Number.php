@@ -79,4 +79,9 @@ class Number
     {
         return $this->int;
     }
+
+    public function getHighestComposingPrimeNumber()
+    {
+        return $this->getComposingNumbers()->getHighestPrimeNumber();
+    }
 }
