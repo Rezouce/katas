@@ -31,4 +31,19 @@ class NumberCollectionTest extends TestCase
 
         $this->assertCount(3, $numberCollection);
     }
+
+    /** @test */
+    public function can_remove_duplicate_numbers()
+    {
+        $numbers = [new Number(1), new Number(10)];
+
+        $numberCollection = new NumberCollection($numbers + $numbers);
+
+        foreach ($numberCollection as $index => $number) {
+            $this->assertContains($number, $numbers);
+            unset($numbers[$index]);
+        }
+
+        $this->assertEmpty($numbers);
+    }
 }

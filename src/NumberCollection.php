@@ -21,4 +21,16 @@ class NumberCollection implements \IteratorAggregate, \Countable
     {
         return count($this->numbers);
     }
+
+    public function removeDuplicate()
+    {
+        $foundIntegers = [];
+
+        array_filter($this->numbers, function ($number) use (&$foundIntegers) {
+            $found = in_array($number->int, $foundIntegers);
+            $foundIntegers[] = $number->int;
+
+            return !$found;
+        });
+    }
 }
