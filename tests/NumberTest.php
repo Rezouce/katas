@@ -27,7 +27,7 @@ class NumberTest extends TestCase
     /** @test */
     public function N_digits_numbers_are_composed_of_themselves_and_N_minus_1_digit_numbers_up_to_1_digit_numbers()
     {
-        $testedNumbers = range(1, 2000);
+        $testedNumbers = [1, 5, 9, 10, 55, 100, 110, 2000, 9001, 8456];
 
         foreach ($testedNumbers as $i) {
             $number = new Number($i);
