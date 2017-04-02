@@ -62,6 +62,14 @@ class Number
                 $numberFromFirstPart->getComposingNumbers(),
                 $numberFromSecondPart->getComposingNumbers()
             );
+
+            $foundIntegers = [];
+            $composingNumbers = array_filter($composingNumbers, function($number) use (&$foundIntegers) {
+                $found = in_array($number->int, $foundIntegers);
+                $foundIntegers[] = $number->int;
+
+                return !$found;
+            });
         }
 
         return $composingNumbers;
