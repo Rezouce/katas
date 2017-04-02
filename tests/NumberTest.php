@@ -41,62 +41,6 @@ class NumberTest extends TestCase
         foreach ($testedNumbers as $i) {
             $number = new Number($i);
 
-            $this->assertListNumbersForInt($i, $number->getComposingNumbersArray());
-        }
-    }
-
-    private function assertListNumbersForInt($int, array $listNumbers)
-    {
-        $listOfIntegers = $this->getListOfIntComposingAnInt($int);
-
-        $expectedNumbers = array_map(function ($int) {
-            return new Number($int);
-        }, $listOfIntegers);
-
-        foreach ($expectedNumbers as $indexInteger => $expectedNumber) {
-            $found = false;
-
-            foreach ($listNumbers as $indexNumber => $number) {
-                if ($expectedNumber == $number) {
-                    $found = true;
-                    unset($listNumbers[$indexNumber]);
-                    break;
-                }
-            }
-
-            $this->assertTrue(
-                $found,
-                sprintf('The composing number %s was not found for number %s', $listOfIntegers[$indexInteger], $int)
-            );
-        }
-
-        $this->assertEmpty(
-            $listNumbers,
-            sprintf('The list of composing numbers from %s, has %s duplication(s)', $int, count($listNumbers))
-        );
-    }
-
-    private function getListOfIntComposingAnInt($int)
-    {
-        $ints = [];
-
-        for ($i = 0; $i < strlen($int); ++$i) {
-            for ($j = 1; $j + $i <= strlen($int); ++$j) {
-                $ints[] = (int)substr($int, $i, $j);
-            }
-        }
-
-        return array_unique($ints);
-    }
-
-    /** @test */
-    public function N_digits_numbers_are_composed_of_themselves_and_N_minus_1_digit_numbers_up_to_1_digit_numbers_without_any_duplicated_numbers_for_collection()
-    {
-        $testedNumbers = [1, 5, 9, 10, 55, 100, 110, 2000, 9001, 8456];
-
-        foreach ($testedNumbers as $i) {
-            $number = new Number($i);
-
             $this->assertNumberCollectionForInt($i, $number->getComposingNumbers());
         }
     }
@@ -110,5 +54,18 @@ class NumberTest extends TestCase
         }, $listOfIntegers));
 
         $this->assertTrue($expectedNumbers->isEqual($listNumbers));
+    }
+
+    private function getListOfIntComposingAnInt($int)
+    {
+        $ints = [];
+
+        for ($i = 0; $i < strlen($int); ++$i) {
+            for ($j = 1; $j + $i <= strlen($int); ++$j) {
+                $ints[] = (int)substr($int, $i, $j);
+            }
+        }
+
+        return array_unique($ints);
     }
 }
