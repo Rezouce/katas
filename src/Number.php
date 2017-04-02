@@ -62,8 +62,6 @@ class Number
                 $numberFromFirstPart->getComposingNumbersArray(),
                 $numberFromSecondPart->getComposingNumbersArray()
             );
-
-            $composingNumbers = $this->removeDuplicateNumbers($composingNumbers);
         }
 
         return $composingNumbers;
@@ -71,19 +69,10 @@ class Number
 
     public function getComposingNumbers()
     {
-        return new NumberCollection($this->getComposingNumbersArray());
-    }
+        $collection = new NumberCollection($this->getComposingNumbersArray());
+        $collection->removeDuplicate();
 
-    private function removeDuplicateNumbers(array $numbers)
-    {
-        $foundIntegers = [];
-
-        return array_filter($numbers, function ($number) use (&$foundIntegers) {
-            $found = in_array($number->int, $foundIntegers);
-            $foundIntegers[] = $number->int;
-
-            return !$found;
-        });
+        return $collection;
     }
 
     public function toInt()
