@@ -63,15 +63,21 @@ class Number
                 $numberFromSecondPart->getComposingNumbers()
             );
 
-            $foundIntegers = [];
-            $composingNumbers = array_filter($composingNumbers, function($number) use (&$foundIntegers) {
-                $found = in_array($number->int, $foundIntegers);
-                $foundIntegers[] = $number->int;
-
-                return !$found;
-            });
+            $composingNumbers = $this->removeDuplicateNumbers($composingNumbers);
         }
 
         return $composingNumbers;
+    }
+
+    private function removeDuplicateNumbers(array $numbers)
+    {
+        $foundIntegers = [];
+
+        return array_filter($numbers, function ($number) use (&$foundIntegers) {
+            $found = in_array($number->int, $foundIntegers);
+            $foundIntegers[] = $number->int;
+
+            return !$found;
+        });
     }
 }
