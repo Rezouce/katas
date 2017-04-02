@@ -75,4 +75,44 @@ class NumberTest extends TestCase
             );
         }
     }
+
+    /** @test */
+    public function can_manage_100()
+    {
+        $number = new Number(100);
+
+        $expectedNumbers = [
+            new Number(100),
+            new Number(10),
+            new Number(1),
+            new Number(0),
+            new Number(0),
+        ];
+
+        $this->assertEquals($expectedNumbers, $number->getComposingNumbers());
+    }
+
+    /** @test */
+    public function can_manage_101_to_109()
+    {
+        $testedNumbers = range(101, 109);
+
+        foreach ($testedNumbers as $i) {
+            $number = new Number($i);
+
+            $expectedNumbers = [
+                $number,
+                new Number(10),
+                new Number(1),
+                new Number(0),
+                new Number(substr($i, 2)),
+            ];
+
+            $this->assertEquals(
+                $expectedNumbers,
+                $number->getComposingNumbers(),
+                "Couldn't retrieve composing numbers from " . $i
+            );
+        }
+    }
 }
