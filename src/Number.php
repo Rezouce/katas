@@ -46,4 +46,9 @@ class Number
     {
         return floor(sqrt($this->int));
     }
+
+    public function getComposingNumbers()
+    {
+        return [$this];
+    }
 }

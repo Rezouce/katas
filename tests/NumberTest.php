@@ -23,4 +23,14 @@ class NumberTest extends TestCase
             }
         }
     }
+
+    /** @test */
+    public function one_digit_numbers_are_composed_of_themselves_only()
+    {
+        for ($i = 0; $i <= 9; ++$i) {
+            $number = new Number($i);
+
+            $this->assertEquals([$number], $number->getComposingNumbers());
+        }
+    }
 }
