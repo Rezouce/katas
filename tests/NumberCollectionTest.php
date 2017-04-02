@@ -79,7 +79,7 @@ class NumberCollectionTest extends TestCase
 
         $numbers = [new Number(2), new Number(100), $highestPrimeNumber, new Number(4)];
 
-        $numberCollection = new NumberCollection(array_merge($numbers, $numbers));
+        $numberCollection = new NumberCollection($numbers);
         $this->assertEquals($highestPrimeNumber, $numberCollection->getHighestPrimeNumber());
     }
 
