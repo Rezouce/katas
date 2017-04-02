@@ -51,11 +51,17 @@ class Number
     {
         $composingNumbers = [$this];
 
-        if ($this->int >= 10 && $this->int <= 99) {
-            $composingNumbers = array_merge($composingNumbers, [
-                new Number(((string)$this->int)[0]),
-                new Number(((string)$this->int)[1]),
-            ]);
+        if ($this->int > 9) {
+            $numberDigits = strlen($this->int);
+
+            $numberFromFirstPart = new Number((int)substr($this->int, 0, $numberDigits - 1));
+            $numberFromSecondPart = new Number((int)substr($this->int, 1));
+
+            $composingNumbers = array_merge(
+                $composingNumbers,
+                $numberFromFirstPart->getComposingNumbers(),
+                $numberFromSecondPart->getComposingNumbers()
+            );
         }
 
         return $composingNumbers;

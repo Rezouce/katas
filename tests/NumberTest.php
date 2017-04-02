@@ -49,4 +49,30 @@ class NumberTest extends TestCase
             $this->assertEquals($expectedNumbers, $number->getComposingNumbers());
         }
     }
+
+    /** @test */
+    public function three_digits_numbers_which_3_different_numbers_are_composed_of_1_digit_numbers_2_digits_numbers_and_themselves()
+    {
+        $testedNumbers = range(110, 199);
+
+        foreach ($testedNumbers as $i) {
+            $number = new Number($i);
+
+            $expectedNumbers = [
+                $number,
+                new Number(substr($i, 0, 2)),
+                new Number((int)((string)$i)[0]),
+                new Number((int)((string)$i)[1]),
+                new Number(substr($i, 1, 2)),
+                new Number((int)((string)$i)[1]),
+                new Number((int)((string)$i)[2]),
+            ];
+
+            $this->assertEquals(
+                $expectedNumbers,
+                $number->getComposingNumbers(),
+                "Couldn't retrieve composing numbers from " . $i
+            );
+        }
+    }
 }
