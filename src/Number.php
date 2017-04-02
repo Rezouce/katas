@@ -30,7 +30,7 @@ class Number
         }
 
         // If a number can be divided by anything else than 1 or itself, it's not a prime number.
-        for ($i = 3; $i <= $this->getMaxNumberToTestPrime(); $i += 2) {
+        for ($i = 3; $i <= $this->getMaxIntegerToTestForKnowingIfNumberIsPrime(); $i += 2) {
             if ($this->int % $i == 0) {
                 return false;
             }
@@ -42,7 +42,7 @@ class Number
     /**
      * There is no need to test with numbers larger than the square root of the tested int.
      */
-    private function getMaxNumberToTestPrime()
+    private function getMaxIntegerToTestForKnowingIfNumberIsPrime()
     {
         return floor(sqrt($this->int));
     }
