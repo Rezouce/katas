@@ -58,4 +58,17 @@ class NumberCollectionTest extends TestCase
         $this->assertFalse($numberCollection1->isEqual($numberCollection3));
         $this->assertFalse($numberCollection1->isEqual($numberCollection4));
     }
+
+    /** @test */
+    public function rsort_a_collection()
+    {
+        $number1 = new Number(1);
+        $number2 = new Number(2);
+        $number3 = new Number(3);
+
+        $numberCollection = new NumberCollection([$number1, $number3, $number2]);
+        $numberCollection->rsort();
+
+        $this->assertEquals([$number3, $number2, $number1], $numberCollection->getIterator()->getArrayCopy());
+    }
 }

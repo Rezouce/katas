@@ -49,4 +49,11 @@ class NumberCollection implements \IteratorAggregate, \Countable
             return $number->toInt();
         }, $this->numbers);
     }
+
+    public function rsort()
+    {
+        usort($this->numbers, function(Number $number1, Number $number2) {
+            return $number2->toInt() <=> $number1->toInt();
+        });
+    }
 }
