@@ -37,14 +37,12 @@ class NumberCollectionTest extends TestCase
     {
         $numbers = [new Number(1), new Number(10)];
 
-        $numberCollection = new NumberCollection($numbers + $numbers);
+        $numberCollection = new NumberCollection(array_merge($numbers, $numbers));
+        $this->assertCount(4, $numberCollection);
 
-        foreach ($numberCollection as $index => $number) {
-            $this->assertContains($number, $numbers);
-            unset($numbers[$index]);
-        }
+        $numberCollection->removeDuplicate();
 
-        $this->assertEmpty($numbers);
+        $this->assertEquals($numbers, $numberCollection->getIterator()->getArrayCopy());
     }
 
     /** @test */

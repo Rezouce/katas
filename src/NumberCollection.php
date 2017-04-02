@@ -26,9 +26,9 @@ class NumberCollection implements \IteratorAggregate, \Countable
     {
         $foundIntegers = [];
 
-        array_filter($this->numbers, function ($number) use (&$foundIntegers) {
-            $found = in_array($number->int, $foundIntegers);
-            $foundIntegers[] = $number->int;
+        $this->numbers = array_filter($this->numbers, function (Number $number) use (&$foundIntegers) {
+            $found = in_array($number->toInt(), $foundIntegers);
+            $foundIntegers[] = $number->toInt();
 
             return !$found;
         });
