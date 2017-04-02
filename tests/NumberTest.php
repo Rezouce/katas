@@ -31,4 +31,13 @@ class NumberTest extends TestCase
 
         $this->assertTrue($number->isPrime());
     }
+
+    /** @test */
+    public function check_that_all_pair_values_greater_than_2_are_not_prime()
+    {
+        for ($i = 4; $i < 100; $i += 2) {
+            $number = new Number($i);
+            $this->assertFalse($number->isPrime());
+        }
+    }
 }
