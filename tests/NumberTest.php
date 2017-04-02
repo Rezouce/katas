@@ -33,4 +33,20 @@ class NumberTest extends TestCase
             $this->assertEquals([$number], $number->getComposingNumbers());
         }
     }
+
+    /** @test */
+    public function two_digit_numbers_are_composed_of_1_digit_numbers_and_themselves()
+    {
+        for ($i = 10; $i <= 99; ++$i) {
+            $number = new Number($i);
+
+            $expectedNumbers = [
+                $number,
+                new Number(((string)$i)[0]),
+                new Number(((string)$i)[1]),
+            ];
+
+            $this->assertEquals($expectedNumbers, $number->getComposingNumbers());
+        }
+    }
 }

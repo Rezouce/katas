@@ -49,6 +49,15 @@ class Number
 
     public function getComposingNumbers()
     {
-        return [$this];
+        $composingNumbers = [$this];
+
+        if ($this->int >= 10 && $this->int <= 99) {
+            $composingNumbers = array_merge($composingNumbers, [
+                new Number(((string)$this->int)[0]),
+                new Number(((string)$this->int)[1]),
+            ]);
+        }
+
+        return $composingNumbers;
     }
 }
