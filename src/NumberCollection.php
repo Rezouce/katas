@@ -2,7 +2,7 @@
 
 namespace Kata;
 
-class NumberCollection implements \IteratorAggregate
+class NumberCollection implements \IteratorAggregate, \Countable
 {
 
     private $numbers;
@@ -15,5 +15,10 @@ class NumberCollection implements \IteratorAggregate
     public function getIterator()
     {
         return new \ArrayIterator($this->numbers);
+    }
+
+    public function count()
+    {
+        return count($this->numbers);
     }
 }

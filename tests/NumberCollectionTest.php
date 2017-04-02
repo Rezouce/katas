@@ -23,4 +23,12 @@ class NumberCollectionTest extends TestCase
 
         $this->assertEmpty($numbers);
     }
+
+    /** @test */
+    public function count_the_number_of_items_in_the_collection()
+    {
+        $numberCollection = new NumberCollection([new Number(1), new Number(10), new Number(5)]);
+
+        $this->assertCount(3, $numberCollection);
+    }
 }
