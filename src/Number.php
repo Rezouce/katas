@@ -47,7 +47,7 @@ class Number
         return floor(sqrt($this->int));
     }
 
-    private function getComposingNumbersArray()
+    private function getComposingNumbersAsArray()
     {
         $composingNumbers = [$this];
 
@@ -59,8 +59,8 @@ class Number
 
             $composingNumbers = array_merge(
                 $composingNumbers,
-                $numberFromFirstPart->getComposingNumbersArray(),
-                $numberFromSecondPart->getComposingNumbersArray()
+                $numberFromFirstPart->getComposingNumbersAsArray(),
+                $numberFromSecondPart->getComposingNumbersAsArray()
             );
         }
 
@@ -69,7 +69,7 @@ class Number
 
     private function getComposingNumbers()
     {
-        $collection = new NumberCollection($this->getComposingNumbersArray());
+        $collection = new NumberCollection($this->getComposingNumbersAsArray());
         $collection->removeDuplicate();
 
         return $collection;
