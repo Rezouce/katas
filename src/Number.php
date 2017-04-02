@@ -82,6 +82,13 @@ class Number
 
     public function getHighestComposingPrimeNumber()
     {
-        return $this->getComposingNumbers()->getHighestPrimeNumber();
+        try {
+            return $this->getComposingNumbers()->getHighestPrimeNumber();
+        }
+        catch (\LogicException $e) {
+            throw new \LogicException(
+                sprintf('Could not find a prime number composing the number %s.', $this->int)
+            );
+        }
     }
 }

@@ -85,4 +85,16 @@ class NumberTest extends TestCase
             $this->assertEquals($result, $number->getHighestComposingPrimeNumber()->toInt());
         }
     }
+
+
+    /** @test */
+    public function throws_an_exception_when_trying_to_get_the_highest_prime_number_composing_a_number_without_prime_numbers_inside()
+    {
+        $number = new Number(444);
+
+        $this->expectException(\LogicException::class);
+        $this->expectExceptionMessage('Could not find a prime number composing the number 444.');
+
+        $number->getHighestComposingPrimeNumber();
+    }
 }
