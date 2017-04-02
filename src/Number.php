@@ -80,4 +80,9 @@ class Number
             return !$found;
         });
     }
+
+    public function toInt()
+    {
+        return $this->int;
+    }
 }

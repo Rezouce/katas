@@ -9,6 +9,14 @@ class NumberTest extends TestCase
 {
 
     /** @test */
+    public function return_its_int_value()
+    {
+        $number = new Number(855);
+
+        $this->assertEquals(855, $number->toInt());
+    }
+
+    /** @test */
     public function check_if_numbers_from_0_to_7919_are_primes()
     {
         $listOfPrimeNumbers = require __DIR__ . '/../resources/1000_first_prime_numbers.php';
