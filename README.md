@@ -18,3 +18,9 @@ Some examples:
 - From the number 18572 there are 4 primes numbers, 5, 7, 2 and 857, so the highest is 857.
 
 You can see my way to solve it by looking from the commit [b6ccf34](https://github.com/Rezouce/katas/commit/b6ccf34673332eef2b9f014764b9df057eb940a0) to [92d2064](https://github.com/Rezouce/katas/commit/92d206419dfa6030a8c549cc3c71b158a9ad78ff) (39 commits).
+
+## KataPotter
+
+The principle of this kata is to be able to buy a series of books at the best possible price, based on multiple discount rules.
+
+You can find more about those rules by going to the [KataPotter page](http://codingdojo.org/kata/Potter/).
