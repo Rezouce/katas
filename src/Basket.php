@@ -7,6 +7,14 @@ class Basket
     /** @var Book[] */
     private $books = [];
 
+    private $discountMultipliers = [
+        1 => 1,
+        2 => 0.95,
+        3 => 0.9,
+        4 => 0.8,
+        5 => 0.75,
+    ];
+
     public function add(Book $book)
     {
         $this->books[] = $book;
@@ -24,17 +32,7 @@ class Basket
             foreach ($bookPricesGroupedByVolumes as $volumeNumber => &$group) {
                 $bookPrice = array_shift($group);
 
-                if ($numberDifferentVolumes == 5) {
-                    $price += $bookPrice * 0.75;
-                } elseif ($numberDifferentVolumes == 4) {
-                    $price += $bookPrice * 0.80;
-                } elseif ($numberDifferentVolumes == 3) {
-                    $price += $bookPrice * 0.90;
-                } elseif ($numberDifferentVolumes == 2) {
-                    $price+= $bookPrice * 0.95;
-                } else {
-                    $price+= $bookPrice;
-                }
+                $price += $bookPrice * $this->discountMultipliers[$numberDifferentVolumes];
 
                 if (empty($group)) {
                     unset($bookPricesGroupedByVolumes[$volumeNumber]);
