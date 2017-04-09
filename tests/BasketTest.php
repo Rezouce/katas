@@ -20,17 +20,7 @@ class BasketTest extends TestCase
     }
 
     /** @test */
-    public function two_books_with_different_volume_numbers_have_a_5_percent_discounts()
-    {
-        $basket = new Basket;
-        $basket->add(new Book(2));
-        $basket->add(new Book(4));
-
-        $this->assertEquals(8 * 2 * 0.95, $basket->getPrice());
-    }
-
-    /** @test */
-    public function three_books_with_2_different_have_only_the_different_discounted()
+    public function when_having_books_of_2_different_volumes_each_combination_is_discounted_by_5_percent()
     {
         $basket = new Basket;
         $basket->add(new Book(2));
