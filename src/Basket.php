@@ -4,7 +4,7 @@ namespace Kata;
 
 class Basket
 {
-
+    /** @var Book[] */
     private $books = [];
 
     public function add(Book $book)
@@ -14,18 +14,39 @@ class Basket
 
     public function getPrice()
     {
-        $numberDifferentVolumes = count(array_count_values(array_map(function(Book $book) {
-            return $book->getVolumeNumber();
-        }, $this->books)));
+        $price = 0;
 
-        $price = array_reduce($this->books, function($price, Book $book) {
-            return $price + $book->getPrice();
-        }, 0);
+        $bookPricesGroupedByVolumes = $this->getBookPricesGroupedByVolumes();
 
-        if ($numberDifferentVolumes == 2) {
-            $price *= 0.95;
+        for ($i = 0, $count = count(max($bookPricesGroupedByVolumes)); $i < $count; ++$i) {
+            $numberDifferentVolumes = count($bookPricesGroupedByVolumes);
+
+            foreach ($bookPricesGroupedByVolumes as $volumeNumber => &$group) {
+                $bookPrice = array_shift($group);
+
+                if ($numberDifferentVolumes == 2) {
+                    $price+= $bookPrice * 0.95;
+                } else {
+                    $price+= $bookPrice;
+                }
+
+                if (empty($group)) {
+                    unset($bookPricesGroupedByVolumes[$volumeNumber]);
+                }
+            }
         }
 
         return $price;
+    }
+
+    private function getBookPricesGroupedByVolumes()
+    {
+        $groups = [];
+
+        foreach ($this->books as $book) {
+            $groups[$book->getVolumeNumber()][] = $book->getPrice();
+        }
+
+        return $groups;
     }
 }

@@ -28,4 +28,15 @@ class BasketTest extends TestCase
 
         $this->assertEquals(8 * 2 * 0.95, $basket->getPrice());
     }
+
+    /** @test */
+    public function three_books_with_2_different_have_only_the_different_discounted()
+    {
+        $basket = new Basket;
+        $basket->add(new Book(2));
+        $basket->add(new Book(4));
+        $basket->add(new Book(2));
+
+        $this->assertEquals(8 + 8 * 2 * 0.95, $basket->getPrice());
+    }
 }
