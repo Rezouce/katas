@@ -29,4 +29,19 @@ class BasketTest extends TestCase
 
         $this->assertEquals(8 + 8 * 2 * 0.95, $basket->getPrice());
     }
+
+    /** @test */
+    public function when_having_books_of_3_different_volumes_each_combination_is_discounted_by_10_percent()
+    {
+        $basket = new Basket;
+
+        $basket->add(new Book(2));
+        $basket->add(new Book(2));
+        $basket->add(new Book(2));
+        $basket->add(new Book(4));
+        $basket->add(new Book(4));
+        $basket->add(new Book(1));
+
+        $this->assertEquals(8 + 8 * 2 * 0.95 + 8 * 3 * 0.90, $basket->getPrice());
+    }
 }
