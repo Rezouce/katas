@@ -15,4 +15,12 @@ class BookTest extends TestCase
 
         $this->assertEquals(8, $book->getPrice());
     }
+
+    /** @test */
+    public function it_has_a_volumeNumber()
+    {
+        $book = new Book(5);
+
+        $this->assertEquals(5, $book->getVolumeNumber());
+    }
 }
