@@ -24,7 +24,9 @@ class Basket
             foreach ($bookPricesGroupedByVolumes as $volumeNumber => &$group) {
                 $bookPrice = array_shift($group);
 
-                if ($numberDifferentVolumes == 3) {
+                if ($numberDifferentVolumes == 4) {
+                    $price += $bookPrice * 0.80;
+                } elseif ($numberDifferentVolumes == 3) {
                     $price += $bookPrice * 0.90;
                 } elseif ($numberDifferentVolumes == 2) {
                     $price+= $bookPrice * 0.95;
