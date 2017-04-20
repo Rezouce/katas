@@ -26,6 +26,8 @@ class Basket
 
         $bookPricesGroupedByVolumes = $this->getBookPricesGroupedByVolumes();
 
+        // For each line, compute all discounts possible and at the end compare the result.
+
         for ($i = 0, $count = count(max($bookPricesGroupedByVolumes)); $i < $count; ++$i) {
             $numberDifferentVolumes = count($bookPricesGroupedByVolumes);
 

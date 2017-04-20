@@ -77,4 +77,21 @@ class BasketTest extends TestCase
 
         $this->assertEquals(8 + 8 * 2 * 0.95 + 8 * 5 * 0.75, $basket->getPrice());
     }
+
+    /** @test */
+    public function it_choose_the_best_discounts_to_have_the_lower_price()
+    {
+        $basket = new Basket;
+
+        $basket->add(new Book(1));
+        $basket->add(new Book(1));
+        $basket->add(new Book(2));
+        $basket->add(new Book(2));
+        $basket->add(new Book(3));
+        $basket->add(new Book(3));
+        $basket->add(new Book(4));
+        $basket->add(new Book(5));
+
+        $this->assertEquals(2 * (8 * 4 * 0.8), $basket->getPrice());
+    }
 }
