@@ -15,9 +15,9 @@ class SpiralTest extends TestCase
         $spiral = new Spiral(new StringPainter);
 
         $this->expectException(\RuntimeException::class);
-        $this->expectExceptionMessage('A spiral must have a minimal size of 5');
+        $this->expectExceptionMessage('A spiral must have a minimal of 5 sides.');
 
-        $spiral->draws($size = 2);
+        $spiral->draws($sides = 2);
     }
 
     /** @test */
@@ -31,7 +31,7 @@ class SpiralTest extends TestCase
                         . '0...0' . "\n"
                         . '00000';
 
-        $this->assertEquals($expectedString, $spiral->draws($size = 5));
+        $this->assertEquals($expectedString, $spiral->draws($sides = 5));
     }
 
     /** @test */
@@ -50,6 +50,6 @@ class SpiralTest extends TestCase
                         . '0........0' . "\n"
                         . '0000000000';
 
-        $this->assertEquals($expectedString, $spiral->draws($size = 10));
+        $this->assertEquals($expectedString, $spiral->draws($sides = 10));
     }
 }

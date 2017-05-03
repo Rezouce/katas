@@ -18,7 +18,7 @@ class Spiral
 
     private $painter;
 
-    private $spiralRepresentation = [];
+    private $grid = [];
 
     private $currentX;
     private $currentY;
@@ -30,44 +30,37 @@ class Spiral
         $this->painter = $painter;
     }
 
-    public function draws(int $size)
+    public function draws(int $numberSides)
     {
-        if ($size < 5) {
-            throw new \RuntimeException('A spiral must have a minimal size of 5');
+        if ($numberSides < 5) {
+            throw new \RuntimeException('A spiral must have a minimal of 5 sides.');
         }
 
-        $this->createEmptyRepresentation($size);
-
-        $this->initializeCoordinates($size);
+        $this->initializeCoordinates();
         $this->initializeDirection();
 
-        $this->addLine($size);
+        $this->createEmptyGrid($numberSides);
 
-        for ($i = 0; $i < $size - 1; ++$i) {
-            $lineSize = $size - 1 - $i + $i % 2;
-
-            $this->addLine($lineSize);
+        for ($sideNumber = 1; $sideNumber <= $numberSides; ++$sideNumber) {
+            $this->addSideToGrid($this->getSideSize($numberSides, $sideNumber));
         }
 
-        return $this->painter->draws($this->spiralRepresentation);
+        return $this->painter->draws($this->grid);
     }
 
-    private function createEmptyRepresentation(int $size)
+    private function createEmptyGrid(int $size)
     {
-        $minimumCoordinate = 0 - floor($size / 2);
-        $maximumCoordinate = $size - ceil($size / 2);
-
-        for ($i = $minimumCoordinate; $i < $maximumCoordinate; ++$i) {
-            for ($j = $minimumCoordinate; $j < $maximumCoordinate; ++$j) {
-                $this->spiralRepresentation[$i][$j] = '.';
+        for ($i = 0; $i < $size; ++$i) {
+            for ($j = 0; $j < $size; ++$j) {
+                $this->grid[$i][$j] = '.';
             }
         }
     }
 
-    private function initializeCoordinates($size)
+    private function initializeCoordinates()
     {
-        $this->currentX = -1 - floor($size / 2);
-        $this->currentY = 0 - floor($size / 2);
+        $this->currentX = -1;
+        $this->currentY = 0;
     }
 
     private function initializeDirection()
@@ -75,7 +68,7 @@ class Spiral
         $this->direction = static::RIGHT;
     }
 
-    private function addLine(int $size)
+    private function addSideToGrid(int $size)
     {
         [$xMultiplier, $yMultiplier] = $this->getCoordinatesMultipliers();
 
@@ -83,10 +76,17 @@ class Spiral
             $this->currentX += $xMultiplier;
             $this->currentY += $yMultiplier;
 
-            $this->spiralRepresentation[$this->currentY][$this->currentX] = '0';
+            $this->grid[$this->currentY][$this->currentX] = '0';
         }
 
         $this->changeLineDirection();
+    }
+
+    private function getSideSize(int $numberSides, int $sideNumber): int
+    {
+        return $sideNumber === 1
+            ? $numberSides
+            : 1 + $numberSides - $sideNumber + $sideNumber % 2;
     }
 
     private function changeLineDirection()
