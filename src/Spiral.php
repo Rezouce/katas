@@ -15,6 +15,10 @@ class Spiral
 
     public function draws(int $size)
     {
+        if ($size < 5) {
+            throw new \RuntimeException('A spiral must have a minimal size of 5');
+        }
+
         $spiral = [
             ['0', '0', '0', '0', '0'],
             ['.', '.', '.', '.', '0'],
