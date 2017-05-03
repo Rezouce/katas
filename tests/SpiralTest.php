@@ -33,4 +33,23 @@ class SpiralTest extends TestCase
 
         $this->assertEquals($expectedString, $spiral->draws($size = 5));
     }
+
+    /** @test */
+    public function it_draws_a_spiral_with_a_size_of_10()
+    {
+        $spiral = new Spiral(new StringPainter);
+
+        $expectedString = '0000000000' . "\n"
+                        . '.........0' . "\n"
+                        . '00000000.0' . "\n"
+                        . '0......0.0' . "\n"
+                        . '0.0000.0.0' . "\n"
+                        . '0.0..0.0.0' . "\n"
+                        . '0.0....0.0' . "\n"
+                        . '0.000000.0' . "\n"
+                        . '0........0' . "\n"
+                        . '0000000000';
+
+        $this->assertEquals($expectedString, $spiral->draws($size = 10));
+    }
 }
