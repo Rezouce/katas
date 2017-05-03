@@ -24,22 +24,37 @@ You can see my way to solve it by looking from the commit [b6ccf34](https://gith
 The task is to create a NxN spiral with a given size.
 
 For example, spiral with size 5 should look like this:
+
 00000
+
 ....0
+
 000.0
+
 0...0
+
 00000
 
 And with the size 10:
+
 0000000000
+
 .........0
+
 00000000.0
+
 0......0.0
+
 0.0000.0.0
+
 0.0..0.0.0
+
 0.0....0.0
+
 0.000000.0
+
 0........0
+
 0000000000
 
 You can see my way to solve it by looking from the commit [6e972ae](https://github.com/Rezouce/katas/commit/6e972ae8ce43cac04ced9a5602a9d6797b2752fd) to [23592b2](https://github.com/Rezouce/katas/commit/23592b2d1455e88353b8b7534fece100fa74e85a) (5 commits).
