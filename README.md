@@ -47,3 +47,23 @@ And with the size 10:
 ```
 
 You can see my way to solve it by looking from the commit [6e972ae](https://github.com/Rezouce/katas/commit/6e972ae8ce43cac04ced9a5602a9d6797b2752fd) to [23592b2](https://github.com/Rezouce/katas/commit/23592b2d1455e88353b8b7534fece100fa74e85a) (5 commits).
+
+## Cat and Mouse
+
+Given a string map filled with '.', featuring a cat 'C' and a mouse 'm'.
+We need to find out if the cat can catch the mouse from it's current position in a given number of moves.
+The cat can move to up, down, left and right.
+
+```
+..C......
+.........
+....m....
+```
+
+```
+.C.......
+.........
+......m..
+```
+
+You can see my way to solve it by looking at the commit [0cdf648](https://github.com/Rezouce/katas/commit/0cdf648f2c2fe22051c04cb67694adf260f3feba).
