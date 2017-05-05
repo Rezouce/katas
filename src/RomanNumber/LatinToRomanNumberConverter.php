@@ -1,5 +1,5 @@
 <?php
-namespace Kata;
+namespace Kata\RomanNumber;
 
 class LatinToRomanNumberConverter
 {

@@ -1,9 +1,9 @@
 <?php
 
-namespace Test\Kata;
+namespace Test\Kata\HighestPrimeNumber;
 
-use Kata\Number;
-use Kata\NumberCollection;
+use Kata\HighestPrimeNumber\Number;
+use Kata\HighestPrimeNumber\NumberCollection;
 use PHPUnit\Framework\TestCase;
 
 class NumberCollectionTest extends TestCase

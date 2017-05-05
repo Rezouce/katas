@@ -1,6 +1,6 @@
 <?php
 
-namespace Kata;
+namespace Kata\Spiral;
 
 class Spiral
 {

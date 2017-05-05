@@ -1,8 +1,8 @@
 <?php
 
-namespace Test\Kata;
+namespace Test\Kata\Spiral;
 
-use Kata\StringPainter;
+use Kata\Spiral\StringPainter;
 use PHPUnit\Framework\TestCase;
 
 class StringPainterTest extends TestCase

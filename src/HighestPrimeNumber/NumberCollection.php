@@ -1,6 +1,6 @@
 <?php
 
-namespace Kata;
+namespace Kata\HighestPrimeNumber;
 
 class NumberCollection implements \IteratorAggregate, \Countable
 {

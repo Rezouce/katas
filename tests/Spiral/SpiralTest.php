@@ -1,9 +1,9 @@
 <?php
 
-namespace Test\Kata;
+namespace Test\Kata\Spiral;
 
-use Kata\Spiral;
-use Kata\StringPainter;
+use Kata\Spiral\Spiral;
+use Kata\Spiral\StringPainter;
 use PHPUnit\Framework\TestCase;
 
 class SpiralTest extends TestCase

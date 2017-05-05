@@ -1,7 +1,7 @@
 <?php
-namespace Test\Kata;
+namespace Test\Kata\RomanNumber;
 
-use Kata\LatinToRomanNumberConverter;
+use Kata\RomanNumber\LatinToRomanNumberConverter;
 use PHPUnit\Framework\TestCase;
 
 class LatinToRomanNumberConverterTest extends TestCase

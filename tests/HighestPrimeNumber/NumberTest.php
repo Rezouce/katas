@@ -1,8 +1,8 @@
 <?php
 
-namespace Test\Kata;
+namespace Test\Kata\HighestPrimeNumber;
 
-use Kata\Number;
+use Kata\HighestPrimeNumber\Number;
 use PHPUnit\Framework\TestCase;
 
 class NumberTest extends TestCase
@@ -19,7 +19,7 @@ class NumberTest extends TestCase
     /** @test */
     public function check_if_numbers_from_0_to_7919_are_primes()
     {
-        $listOfPrimeNumbers = require __DIR__ . '/../resources/1000_first_prime_numbers.php';
+        $listOfPrimeNumbers = require __DIR__ . '/../../resources/1000_first_prime_numbers.php';
 
         for ($i = 0; $i <= end($listOfPrimeNumbers); ++$i) {
             $number = new Number($i);
