@@ -66,4 +66,4 @@ The cat can move to up, down, left and right.
 ......m..
 ```
 
-You can see my way to solve it by looking at the commit [0cdf648](https://github.com/Rezouce/katas/commit/0cdf648f2c2fe22051c04cb67694adf260f3feba).
+You can see my way to solve it by looking at the commits [0cdf648](https://github.com/Rezouce/katas/commit/0cdf648f2c2fe22051c04cb67694adf260f3feba) and [5ff91cc](https://github.com/Rezouce/katas/commit/5ff91cc9594d118bc1032b8a8a3fd4ccf4ef14d9).
