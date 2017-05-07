@@ -5,22 +5,22 @@ namespace Kata\CatAndMouse;
 class Catcher
 {
 
-	private $allowedNumberMoves = 0;
+    private $allowedNumberMoves = 0;
 
-	public function forNumberMove(int $numberMoves): self
-	{
-		$this->allowedNumberMoves = $numberMoves;
+    public function forNumberMove(int $numberMoves): self
+    {
+        $this->allowedNumberMoves = $numberMoves;
 
-		return $this;
-	}
+        return $this;
+    }
 
-	public function canCatchInMap(string $map)
-	{
-		$parser = new MapParser($map);
+    public function canCatchInMap(string $map)
+    {
+        $parser = new MapParser($map);
 
         $distance = abs($parser->getCatPosition() - $parser->getMousePosition());
-		$numberMovesToDo = floor($distance / $parser->getMapLength()) + $distance % $parser->getMapLength();
+        $numberMovesToDo = floor($distance / $parser->getMapLength()) + $distance % $parser->getMapLength();
 
-		return $this->allowedNumberMoves >= $numberMovesToDo;
-	}
+        return $this->allowedNumberMoves >= $numberMovesToDo;
+    }
 }
