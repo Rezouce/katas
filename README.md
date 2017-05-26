@@ -67,3 +67,19 @@ The cat can move to up, down, left and right.
 ```
 
 You can see my way to solve it by looking at the commits [0cdf648](https://github.com/Rezouce/katas/commit/0cdf648f2c2fe22051c04cb67694adf260f3feba) and [5ff91cc](https://github.com/Rezouce/katas/commit/5ff91cc9594d118bc1032b8a8a3fd4ccf4ef14d9).
+
+## Sort the animals
+
+Consider the following class:
+
+```
+class Animal
+{
+	public string Name { get; set; }
+	public int NumberOfLegs { get; set; }
+}
+```
+
+Write a method that accepts a list of objects of type Animal, and returns a new list. The new list should be a copy of the original list, sorted first by the animal's number of legs, and then by its name.
+
+If null is passed, the method should return null. If an empty list is passed, it should return an empty list back.
