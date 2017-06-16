@@ -22,11 +22,9 @@ class WeatherTest extends TestCase
     {
         $weather = new Weather($this->data);
 
-        $this->assertEquals([
-            ['day' => 1, 'temperature' => 59],
-            ['day' => 2, 'temperature' => 63],
-            ['day' => 3, 'temperature' => 55],
-            ['day' => 4, 'temperature' => 59],
-        ], $weather->getMinimumTemperatureForEachDay());
+        $this->assertEquals(
+            ['day' => 2, 'difference' => 16],
+            $weather->getDayWithSmallestTemperatureDifference()
+        );
     }
 }

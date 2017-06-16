@@ -19,13 +19,17 @@ class Weather
         return array_map(function ($data) {
             return [
                 'day' => $data[0],
-                'temperature' => $data[2],
+                'difference' => abs($data[2] - $data[1]),
             ];
         }, $data);
     }
 
-    public function getMinimumTemperatureForEachDay()
+    public function getDayWithSmallestTemperatureDifference()
     {
-        return $this->data;
+        return array_reduce($this->data, function ($bestDifference, $testedDifference) {
+            return $bestDifference['difference'] > $testedDifference['difference']
+                ? $testedDifference
+                : $bestDifference;
+        }, ['difference' => 999]);
     }
 }
