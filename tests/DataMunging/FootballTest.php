@@ -17,7 +17,7 @@ class FootballTest extends TestCase
 ';
 
     /** @test */
-    public function it_returns_the_minimum_temperature_for_each_day()
+    public function it_returns_the_team_with_the_smallest_for_and_against_difference()
     {
         $football = new Football($this->data);
 
