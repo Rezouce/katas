@@ -75,3 +75,19 @@ class Animal
 Write a method that accepts a list of objects of type Animal, and returns a new list. The new list should be a copy of the original list, sorted first by the animal's number of legs, and then by its name.
 
 If null is passed, the method should return null. If an empty list is passed, it should return an empty list back.
+
+## Data Munging
+
+### Part One: Weather Data
+
+In weather.dat you’ll find daily weather data for Morristown, NJ for June 2002.
+Download this text file, then write a program to output the day number (column one) with the smallest temperature spread (the maximum temperature is the second column, the minimum the third column).
+
+### Part Two: Soccer League Table
+
+The file football.dat contains the results from the English Premier League for 2001/2. The columns labeled ‘F’ and ‘A’ contain the total number of goals scored for and against each team in that season (so Arsenal scored 79 goals against opponents, and had 36 goals scored against them).
+Write a program to print the name of the team with the smallest difference in ‘for’ and ‘against’ goals.
+
+### Part Three: DRY Fusion
+
+Take the two programs written previously and factor out as much common code as possible, leaving you with two smaller programs and some kind of shared functionality.
