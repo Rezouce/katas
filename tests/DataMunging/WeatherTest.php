@@ -8,7 +8,7 @@ use PHPUnit\Framework\TestCase;
 class WeatherTest extends TestCase
 {
 
-	private $data = '  Dy MxT   MnT   AvT   HDDay  AvDP 1HrP TPcpn WxType PDir AvSp Dir MxS SkyC MxR MnR AvSLP
+    private $data = '  Dy MxT   MnT   AvT   HDDay  AvDP 1HrP TPcpn WxType PDir AvSp Dir MxS SkyC MxR MnR AvSLP
 
    1  88    59    74          53.8       0.00 F       280  9.6 270  17  1.6  93 23 1004.5
    2  79    63    71          46.5       0.00         330  8.7 340  23  3.3  70 28 1004.5
@@ -17,16 +17,16 @@ class WeatherTest extends TestCase
 
 ';
 
-	/** @test */
-	public function it_returns_the_minimum_temperature_for_each_day()
-	{
-		$weather = new Weather($this->data);
+    /** @test */
+    public function it_returns_the_minimum_temperature_for_each_day()
+    {
+        $weather = new Weather($this->data);
 
-		$this->assertEquals([
-			['day' => 1, 'temperature' => 59],
-			['day' => 2, 'temperature' => 63],
-			['day' => 3, 'temperature' => 55],
-			['day' => 4, 'temperature' => 59],
-		], $weather->getMinimumTemperatureForEachDay());
-	}
+        $this->assertEquals([
+            ['day' => 1, 'temperature' => 59],
+            ['day' => 2, 'temperature' => 63],
+            ['day' => 3, 'temperature' => 55],
+            ['day' => 4, 'temperature' => 59],
+        ], $weather->getMinimumTemperatureForEachDay());
+    }
 }

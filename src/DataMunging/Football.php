@@ -5,31 +5,31 @@ namespace Kata\DataMunging;
 class Football
 {
 
-	private $data;
+    private $data;
 
-	public function __construct($data)
-	{
-		$data = (new DataProcessor())->process($data);
+    public function __construct($data)
+    {
+        $data = (new DataProcessor())->process($data);
 
-		$this->data = $this->mapData($data);
-	}
+        $this->data = $this->mapData($data);
+    }
 
-	private function mapData(array $data): array
-	{
-		return array_map(function ($data) {
-			return [
-				'team' => $data[1],
-				'difference' => abs($data[8] - $data[6]),
-			];
-		}, $data);
-	}
+    private function mapData(array $data): array
+    {
+        return array_map(function ($data) {
+            return [
+                'team' => $data[1],
+                'difference' => abs($data[8] - $data[6]),
+            ];
+        }, $data);
+    }
 
-	public function getTeamWithSmallestForAndAgainstDifference()
-	{
-		return array_reduce($this->data, function ($currentBestTeam, $testedTeam) {
-			return $currentBestTeam['difference'] > $testedTeam['difference']
-				? $testedTeam
-				: $currentBestTeam;
-		}, ['difference' => 999]);
-	}
+    public function getTeamWithSmallestForAndAgainstDifference()
+    {
+        return array_reduce($this->data, function ($currentBestTeam, $testedTeam) {
+            return $currentBestTeam['difference'] > $testedTeam['difference']
+                ? $testedTeam
+                : $currentBestTeam;
+        }, ['difference' => 999]);
+    }
 }
