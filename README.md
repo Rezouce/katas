@@ -91,3 +91,7 @@ Write a program to print the name of the team with the smallest difference in â€
 ### Part Three: DRY Fusion
 
 Take the two programs written previously and factor out as much common code as possible, leaving you with two smaller programs and some kind of shared functionality.
+
+## 99 Bottles of beer
+
+Write a function sing that returns the lyrics for the song [99 Bottles of Beer](https://en.wikipedia.org/wiki/99_Bottles_of_Beer) as a an array.
