@@ -2,6 +2,8 @@
 
 namespace Kata\BottlesSong;
 
+use Kata\BottlesSong\Bottles\Bottle;
+
 class BottlesSong
 {
 
@@ -9,48 +11,31 @@ class BottlesSong
     {
         $song = [];
 
-        for ($i = $startingNumberBottles; $i > 2; --$i) {
-            $song = array_merge($song, $this->linesForN($i));
+        for ($i = $startingNumberBottles; $i >= 0; --$i) {
+            $song = array_merge($song, $this->newVerse($i));
         }
-
-        $song = array_merge($song, $this->linesFor2());
-        $song = array_merge($song, $this->linesFor1());
-        $song = array_merge($song, $this->lastLines());
 
         return $song;
     }
 
-    private function linesForN($numberBottles)
+    private function newVerse($numberBottles)
     {
-        $numberBottlesLeft = $numberBottles - 1;
+        $bottle = $this->bottle($numberBottles);
 
         return [
-            "$numberBottles bottles of beer on the wall, $numberBottles bottles of beer.",
-            "Take one down and pass it around, $numberBottlesLeft bottles of beer on the wall.",
+            sprintf('%s of beer on the wall, %s of beer.', ucfirst($bottle->currentBottlesNumber()), $bottle->currentBottlesNumber()),
+            sprintf('%s, %s of beer on the wall.', $bottle->getAction(), $bottle->leftBottlesNumber()),
         ];
     }
 
-    private function linesFor2()
+    private function bottle($numberBottles): Bottle
     {
-        return [
-            "2 bottles of beer on the wall, 2 bottles of beer.",
-            "Take one down and pass it around, 1 bottle of beer on the wall.",
-        ];
-    }
+        $bottleClassName = '\Kata\BottlesSong\Bottles\BottleNumber' . $numberBottles;
 
-    private function linesFor1()
-    {
-        return [
-            "1 bottle of beer on the wall, 1 bottle of beer.",
-            "Take one down and pass it around, no more bottles of beer on the wall.",
-        ];
-    }
+        if (!class_exists($bottleClassName)) {
+            $bottleClassName = Bottle::class;
+        }
 
-    private function lastLines()
-    {
-        return [
-            "No more bottles of beer on the wall, no more bottles of beer.",
-            "Go to the store and buy some more, 99 bottles of beer on the wall.",
-        ];
+        return new $bottleClassName($numberBottles);
     }
 }
