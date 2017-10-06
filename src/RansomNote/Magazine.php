@@ -9,7 +9,6 @@ class Magazine
     public function __construct($content)
     {
         $this->availableWords = $this->countWordsInString($content);
-
     }
 
     public function canWrite($sentence)
