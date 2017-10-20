@@ -101,3 +101,13 @@ Write a function sing that returns the lyrics for the song [99 Bottles of Beer](
 A kidnapper wrote a ransom note but is worried it will be traced back to him. He found a magazine and wants to know if he can cut out whole words from it and use them to create an untraceable replica of his ransom note. The words in his note are case-sensitive and he must use whole words available in the magazine, meaning he cannot use substrings or concatenation to create the words he needs.
 
 Given the words in the magazine and the words in the ransom note, print Yes if he can replicate his ransom note exactly using whole words from the magazine; otherwise, print No.
+
+## Greedy thief
+
+In a dark, deserted night, a thief entered a shop. There are some items in the room, and the items have different weight(Kg) and price($):
+
+The thief is greedy, his desire is to take away all the goods. But unfortunately, his bag can only hold n Kg items. So he has to make a choice, try to take away more valuable items.
+
+Please complete the function greedyThief, to help the thief to make the best choice. Two arguments will be given: items(an array that contains all items) and n(the maximum weight of the package can be accommodated).
+
+The result should be a list of items that the thief can take away and has the maximum total price.
